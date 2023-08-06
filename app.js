@@ -2,10 +2,12 @@ let xhr = new XMLHttpRequest();
 const container = document.querySelector('.container');
 const commentsContainer = document.querySelector('.commentsContainer');
 const postContainer = document.querySelector('.postContainer');
+const posth1 = document.querySelector('.post')
+const commenth1 = document.querySelector('.comment')
 
 showUsers();
 container.addEventListener('click', showUsersPosts);
-postContainer.addEventListener('click', showComments); // Event delegation for "comments" button
+postContainer.addEventListener('click', showComments); 
 
 function showUsers() {
   var users = httpAjaxRequest('https://jsonplaceholder.typicode.com/users', userList);
@@ -23,10 +25,10 @@ function httpAjaxRequest(address, targetFunc) {
 
 function showUsersPosts(e) {
   if (e.target.nodeName == 'A') {
+    posth1.style.display = 'block'
     const userId = e.target.dataset.id;
     getPostsByUserId(userId, function(posts) {
       if (posts.length > 0) {
-        // Clear the postContainer before adding new content
         commentsContainer.innerHTML = '';
         postContainer.innerHTML = '';
         posts.forEach(post => {
@@ -70,14 +72,14 @@ function getCommentsByPostId(postId, callback) {
   });
 }
 
-// ... (previous code remains unchanged)
+
 
 function showComments(e) {
   if (e.target.nodeName == 'A') {
-    e.preventDefault(); // Prevent the default behavior of the link
+    commenth1.style.display = 'block'
+    e.preventDefault(); 
     let postId = e.target.dataset.postid;
     getCommentsByPostId(postId, function(comments){
-      // Clear the commentsContainer before adding new content
       commentsContainer.innerHTML = '';
       comments.forEach(comment => {
         commentsContainer.innerHTML += `<div class="comment">

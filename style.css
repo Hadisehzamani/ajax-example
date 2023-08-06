@@ -67,4 +67,10 @@ a {
 
 h1 {
     text-align: center;
+    border: none;
+    margin-left: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
